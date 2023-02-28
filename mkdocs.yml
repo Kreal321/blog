@@ -1,0 +1,88 @@
+site_name: Kason's Blog
+site_url: https://kreal321.github.io/blog/
+site_description: Kason's blog with Markdown.
+site_author: Kason
+
+repo_url: https://github.com/Kreal321/blog
+repo_name: Kreal321/blog
+
+copyright: Copyright &copy; 2020 - 2023 Kason Xu
+
+theme:
+  name: material
+  locale: en
+  icon:
+    logo: fontawesome/solid/k
+    repo: fontawesome/brands/github-alt
+  favicon: assets/favicon.png
+  features:
+    - content.code.copy
+    - content.tooltips
+    - navigation.path
+    - navigation.sections
+    # - navigation.tabs
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+plugins:
+  - search:
+      lang: en
+  - tags:
+      tags_file: tags.md
+
+extra:
+  analytics:
+      provider: google
+      property: G-YQ3ZZQY75T
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Kreal321
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/kezhen-xu/
+  generator: false
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - toc:
+      permalink: true
+      toc_depth: 4
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji 
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+# Page tree
+# nav:
+#   - Home: index.md
+#   - Tags: tags.md
+#   - Java:
+#     - Java Basic: java/java-basic.md
+#   - About:
+#     - About Me: about/about-me.md
