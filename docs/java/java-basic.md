@@ -110,7 +110,7 @@ There are three types of comments in Java.
 
 Java doesn’t need to create an object to call the main() method. The JVM does this, more or less, when loading the class name given to it.
 
-??? info title="JVM, JRE, JDK"
+??? info "What is JVM, JRE or JDK"
 
     - Java Virtual Machine (JVM)
       It is a software component that executes Java bytecode. When you write Java code and compile it, the resulting `.class` file contains bytecode that can be executed by any JVM, regardless of the underlying hardware or operating system, so ==Java is known as a portable language==.

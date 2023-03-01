@@ -1,11 +1,14 @@
 ---
 title: GitPod
 tags:
-  - CI/CD
+  - Tool
   - GitPod
+  - IDE
 ---
 
 # GitPod
+
+Gitpod is a cloud-based Integrated Development Environment (IDE) that allows developers to work on their projects in a pre-configured, containerized workspace that is accessible through a web browser.
 
 ## Prebuilding and Workspace Image
 
