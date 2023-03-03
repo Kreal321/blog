@@ -24,6 +24,20 @@ Git is a popular **version control system(VCS) ** that is used to track changes 
 
     Git stores changes in SHA hashes, which work by compressing text files. That makes Git a very good version control system (VCS) for software programming, but not so good for binary files like images or videos.
 
+## Git Init
+
+```sh
+git init
+```
+
+It turns any directory into a Git repository. Git creates a hidden directory called `.git`. That directory stores all of the objects and refs that Git uses and creates as a part of your project's history. This hidden `.git` directory is what separates a regular directory from a Git repository.
+
+
+## Useful Links
+- [Installing Git Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Git Guide from GitHub](https://github.com/git-guides)
+
+
 ---
 
 :material-clock-edit-outline: Edit on **Feb 24th, 2023**
