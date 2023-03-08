@@ -53,3 +53,168 @@ Spring Interceptors are similar to Servlet Filters. An interceptor just allows c
 ### WebFilter and ServletComponentScan
 
 The `ServletComponentScan` annotation is necessary to enable scanning of Servlet components, including `@WebServlet`, `@WebFilter`, and `@WebListener` in a Spring Boot application and register them with the Servlet Container.
+
+## Spring Security
+
+### Configuration
+#### 1. Component-based security configuration (Recommanded)
+
+Spring framework encourage developers to move towards a component-based security configuration.
+
+```java title="SecurityConfig.java"
+@Configuration
+public class SecurityConfiguration {
+
+    @Bean
+    public AuthenticationManager authenticationManagerBean(HttpSecurity http) throws Exception {
+        // configure AuthenticationManager...
+    }
+         
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // configure HTTP security...
+    }
+     
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        // configure Web security...
+    }
+         
+}
+```
+
+???+ example "Detailed Example"
+
+    ```java title="SecurityConfig.java"
+    @Configuration
+    public class SecurityConfig {
+
+        private UserService userService;
+        private PasswordEncoder encoder;
+        private JwtFilter jwtFilter;
+
+        @Autowired
+        public SecurityConfig(UserService userService, PasswordEncoder encoder, JwtFilter jwtFilter) {
+            this.userService = userService;
+            this.encoder = encoder;
+            this.jwtFilter = jwtFilter;
+        }
+
+        @Bean
+        public AuthenticationManager authenticationManagerBean(HttpSecurity http) throws Exception {
+            AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+            authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(encoder);
+            return authenticationManagerBuilder.build();
+        }
+
+        @Bean
+        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+            http
+                .csrf().disable()
+                .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+                .authorizeRequests()
+                .antMatchers("/api/login").permitAll()
+                .antMatchers("/api/getAll", "/content/get/*").hasAuthority("read")
+                .antMatchers("/api/create").hasAuthority("write")
+                .antMatchers("/api/update").hasAuthority("update")
+                .antMatchers("/api/delete/*").hasAuthority("delete")
+                .anyRequest()
+                .authenticated();
+
+            return http.build();
+        }
+
+        @Bean
+        public WebSecurityCustomizer webSecurityCustomizer() {
+            return (web) -> web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
+        }
+    }
+    ```
+
+#### 2. Extended `WebSecurityConfigurerAdapter` class
+
+Only if you are using Spring Security version 5.6.5 or older, or Spring Boot version 2.6.8 or older
+
+!!! warning "The type `WebSecurityConfigurerAdapter` is deprecated"
+    `WebSecurityConfigurerAdapter` class is deprecated after Spring Security 5.7.1 or Spring Boot 2.7.0, and the reason is that Spring framework encourage users to move towards a component-based security configuration. [Read More](https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter)
+
+```java title="SecurityConfig.java"
+@Configuration
+@EnableWebSecurity
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Override
+    @Bean
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
+    }
+ 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+         
+        // configure HTTP security...
+         
+    }
+ 
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+         
+        // configure Web security...
+         
+    }      
+}
+```
+
+??? example "Detailed Example"
+
+    ```java title="SecurityConfig.java"
+    @Configuration
+    public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+        private UserService userService;
+        private PasswordEncoder encoder;
+        private JwtFilter jwtFilter;
+
+        @Autowired
+        public SecurityConfig(UserService userService, PasswordEncoder encoder, JwtFilter jwtFilter) {
+            this.userService = userService;
+            this.encoder = encoder;
+            this.jwtFilter = jwtFilter;
+        }
+
+        @Bean
+        public DaoAuthenticationProvider daoAuthenticationProvider(){
+            DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+            provider.setUserDetailsService(userService);
+            provider.setPasswordEncoder(encoder);
+            return provider;
+        }
+
+        @Override
+        @Bean
+        protected AuthenticationManager authenticationManager() throws Exception {
+            return super.authenticationManager();
+        }
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http
+                .csrf().disable()
+                .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+                .authorizeRequests()
+                .antMatchers("/api/login").permitAll()
+                .antMatchers("/api/getAll", "/content/get/*").hasAuthority("read")
+                .antMatchers("/api/create").hasAuthority("write")
+                .antMatchers("/api/update").hasAuthority("update")
+                .antMatchers("/api/delete/*").hasAuthority("delete")
+                .anyRequest()
+                .authenticated();
+        }
+
+        @Override
+        public void configure(WebSecurity web) throws Exception {
+            web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
+        }
+    }
+    ```
+

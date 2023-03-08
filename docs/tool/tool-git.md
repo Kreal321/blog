@@ -33,6 +33,15 @@ git init
 It turns any directory into a Git repository. Git creates a hidden directory called `.git`. That directory stores all of the objects and refs that Git uses and creates as a part of your project's history. This hidden `.git` directory is what separates a regular directory from a Git repository.
 
 
+## Git Clone
+
+```sh
+git clone https://github.com/Kreal321/blog.git
+```
+
+The git clone command is used to create a copy of a remote Git repository on your local machine.
+
+
 ## Useful Links
 - [Installing Git Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Git Guide from GitHub](https://github.com/git-guides)
