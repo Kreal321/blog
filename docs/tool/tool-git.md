@@ -42,6 +42,23 @@ git clone https://github.com/Kreal321/blog.git
 The git clone command is used to create a copy of a remote Git repository on your local machine.
 
 
+??? note "How to fix The remote end hung up unexpectedly while git cloning"
+
+    Raising the postBuffer size by:
+
+    ```sh
+    git config --global http.postBuffer 524288000
+    ```
+    
+    If it does not work, you can raise again:
+
+    ```sh
+    git config --global http.postBuffer 1048576000
+    ```
+
+    > Maximum size in bytes of the buffer used by smart HTTP transports when POSTing data to the remote system.
+    > For requests larger than this buffer size, HTTP/1.1 and Transfer-Encoding: chunked is used to avoid creating a massive pack file locally. Default is 1 MiB, which is sufficient for most requests.
+
 ## Useful Links
 - [Installing Git Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Git Guide from GitHub](https://github.com/git-guides)
