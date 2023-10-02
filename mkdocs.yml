@@ -10,6 +10,7 @@ copyright: Copyright &copy; 2020 - 2023 Kason Xu
 
 theme:
   name: material
+  custom_dir: overrides
   locale: en
   icon:
     logo: fontawesome/solid/k
@@ -20,7 +21,7 @@ theme:
     - content.tooltips
     - navigation.path
     - navigation.sections
-    # - navigation.tabs
+    - navigation.tabs
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
@@ -80,10 +81,28 @@ markdown_extensions:
   - pymdownx.superfences
 
 # Page tree
-# nav:
-#   - Home: index.md
-#   - Tags: tags.md
-#   - Java:
-#     - Java Basic: java/java-basic.md
-#   - About:
-#     - About Me: about/about-me.md
+nav:
+  - Home: index.md
+  - Blog:
+    - About: about-me.md
+    - Tags: tags.md
+
+    - Java: 
+      - Java Basic: java/java-basic.md
+      - Java 8: java/java-8.md
+    - Python: 
+      - Python Basic: python/python-basic.md
+    - Angular:
+      - Angular Deployment: angular/deployment.md
+      - Material Design: angular/design.md
+    - Spring Boot:
+      - Spring Security: spring-boot/spring-security.md
+    - Tool:
+      - Git: tool/git.md
+      - GitPod: tool/gitpod.md
+      - Shell: tool/shell.md
+      - SSH: tool/ssh.md
+  - Roadmap: 
+    - Java Full Stack: roadmap/java-full-stack.md
+    - Python Full Stack: roadmap/python-full-stack.md
+  - Me: me.md

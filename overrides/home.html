@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+
+{% block htmltitle %}
+  <title>Kason's Blog</title>
+  <!-- Additional styles for landing page -->
+  <style>
+
+    /* Application header should be static for the landing page */
+    .md-header {
+      position: initial;
+    }
+
+    /* Remove spacing, as we cannot hide it completely */
+    .md-main__inner {
+      margin: 0;
+    }
+
+    /* Hide table of contents */
+    .md-sidebar--secondary {
+      display: none !important;
+    }
+
+    /* Hide navigation */
+    @media screen and (min-width: 76.25em) {
+      .md-sidebar--primary {
+        display: none;
+      }
+    }
+  </style>
+{% endblock %}
