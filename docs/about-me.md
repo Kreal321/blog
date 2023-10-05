@@ -5,7 +5,7 @@ title: About Me
 # The past, present and future
 
 ## About Me
-I have over 2 year of professional experience as a Backend Java/J2EE Developer and over 5 years of experience in programming with diversified exposure in all the phases of the Software Development Life Cycle using Spring Boot, Spring MVC, Spring AOP, Spring Data, Spring Security, Hibernate ORM, and Microservice as well as other web development technologies including RabbitMQ, WebSockets, WebHooks, OAuth2, Gateway, Feign, Eureka, JUnit, Mockito, docker, HTML/CSS, javascript and so on.
+I have over 2 year of professional experience as a Backend Java/J2EE Developer and over 7 years of experience in programming with diversified exposure in all the phases of the Software Development Life Cycle using Spring Boot, Spring MVC, Spring AOP, Spring Data, Spring Security, Hibernate ORM, and Microservice as well as other web development technologies including RabbitMQ, WebSockets, WebHooks, OAuth2, Gateway, Feign, Eureka, JUnit, Mockito, docker, HTML/CSS, javascript and so on.
 
 
 ## A little history

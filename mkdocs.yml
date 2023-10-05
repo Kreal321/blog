@@ -15,7 +15,7 @@ theme:
   icon:
     logo: fontawesome/solid/k
     repo: fontawesome/brands/github-alt
-  favicon: assets/favicon.png
+  favicon: assets/favicon.svg
   features:
     - content.code.copy
     - content.tooltips
@@ -97,6 +97,8 @@ nav:
       - Material Design: angular/design.md
     - Spring Boot:
       - Spring Security: spring-boot/spring-security.md
+    - CI/CD:
+      - Process: cicd/cicd.md
     - Tool:
       - Git: tool/git.md
       - GitPod: tool/gitpod.md
@@ -105,4 +107,6 @@ nav:
   - Roadmap: 
     - Java Full Stack: roadmap/java-full-stack.md
     - Python Full Stack: roadmap/python-full-stack.md
+  - Projects: projects.md
   - Me: me.md
+  

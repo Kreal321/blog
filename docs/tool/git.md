@@ -4,7 +4,7 @@ tags:
   - Git
 ---
 
-Git is a popular **version control system(VCS) ** that is used to track changes to files and directories over time. It has become the de facto standard for version control and is widely used in software development, especially for open-source projects. It is supported by many hosting services, such as GitHub, GitLab, and Bitbucket, which provide additional features such as code reviews, issue tracking, and [continuous integration (CI)](/blog/cicd/cicd).
+Git is a popular **version control system(VCS)** that is used to track changes to files and directories over time. It has become the de facto standard for version control and is widely used in software development, especially for open-source projects. It is supported by many hosting services, such as GitHub, GitLab, and Bitbucket, which provide additional features such as code reviews, issue tracking, and [continuous integration (CI)](/blog/cicd/cicd).
 
 ???+ info "Benefit of Git"
 
@@ -59,12 +59,31 @@ The git clone command is used to create a copy of a remote Git repository on you
     > Maximum size in bytes of the buffer used by smart HTTP transports when POSTing data to the remote system.
     > For requests larger than this buffer size, HTTP/1.1 and Transfer-Encoding: chunked is used to avoid creating a massive pack file locally. Default is 1 MiB, which is sufficient for most requests.
 
+## Git Log
+
+Only show the first line of the commit message
+
+```sh
+git log --oneline
+```
+
+Show author date and commit date information
+
+```sh
+git log --pretty=fuller
+```
+
+??? question "Author date and commit date are different?"
+
+    Author date is the date when the author made the commit, and commit date is the date when the commit was committed to the repository.
+
+    To change commit commit date and author date during git commit, you can use the following command:
+
+    ```sh
+    GIT_COMMITTER_DATE="DATE" git commit -m "init commit" --date="DATE"
+    ```
+
+
 ## Useful Links
 - [Installing Git Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Git Guide from GitHub](https://github.com/git-guides)
-
-
----
-
-:material-clock-edit-outline: Edit on **Feb 24th, 2023**
-:material-clock-plus-outline: Created on **Apr 8th, 2020**
